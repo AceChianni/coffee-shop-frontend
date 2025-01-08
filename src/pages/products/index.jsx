@@ -1,18 +1,27 @@
 // /src/pages/products/index.jsx
+import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
-import mockProducts from '../../mocks/products.json';
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/mocks/products.json');
+      const data = await response.json();
+      setProducts(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
-      <h1 className="text-3xl">Our Products</h1>
-      <div className="grid grid-cols-3 gap-4">
-        {mockProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
-}
+};
 
 export default Products;
