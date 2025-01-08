@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "Espresso",
+      "description": "Strong and bold.",
+      "price": 3.99,
+      "image": "/images/product1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Latte",
+      "description": "Smooth and creamy.",
+      "price": 4.99,
+      "image": "/images/product2.jpg"
+    }
+  ]
+  
