@@ -7,9 +7,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Navbar Links */}
-        <div className="flex">
+        <div className="flex space-x-8"> 
           {/* Home Link */}
-          <Link href="/" className="hover:text-yellow-400 transition duration-300">
+          <Link href="/" className="hover:text-yellow-400 transition duration-300 bg-red-500">
             Home
           </Link>
           <Link href="/products" className="hover:text-yellow-400 transition duration-300">
