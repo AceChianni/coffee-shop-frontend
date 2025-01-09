@@ -1,6 +1,7 @@
 // /src/pages/_app.js
 import Navbar from '../components/Navbar';  
 import '../styles/globals.css';  
+import Footer from '../components/Footer';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
       <div className="pt-20"></div>
       <Component {...pageProps} />
-      
+      <Footer />
     </div>
   );
 }

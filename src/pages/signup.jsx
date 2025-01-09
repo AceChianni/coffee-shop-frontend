@@ -14,13 +14,12 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-grow flex justify-center items-start pt-8"> {/* Increased top padding */}
+      <div className="flex-grow flex justify-center items-start pt-8">
         <div>
           <h1 className="text-3xl font-semibold text-center mb-8">Sign Up</h1>
           <SignupForm buttonLabel="Sign Up" handleSignup={handleSignup} />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

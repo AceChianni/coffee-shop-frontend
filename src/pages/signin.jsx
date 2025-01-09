@@ -1,12 +1,25 @@
-// /src/pages/signin.jsx
-const SignIn = () => {
-    return (
-      <div>
-        <h1>Sign In</h1>
-        {/* Sign in form */}
-      </div>
-    );
+import { useRouter } from 'next/router';
+import LoginForm from '../components/LoginForm';
+// import Navbar from '../components/Navbar';
+// import Footer from '../components/Footer';
+
+export default function Signin() {
+  const router = useRouter();
+
+  function handleLogin() {
+    console.log('clicked sign in');
   }
-  
-  export default SignIn;
-  
+
+  return (
+    <div className="min-h-screen flex flex-col">
+
+      <div className="flex-grow flex justify-center items-start pt-8">
+        <div>
+          <h1 className="text-3xl font-semibold text-center mb-8">Sign In</h1>
+          <LoginForm buttonLabel="Login" handleLogin={handleLogin} />
+        </div>
+      </div>
+    
+    </div>
+  );
+}
