@@ -10,7 +10,6 @@ const HomePage = () => {
     <div>
       <Header />
       <HeroSection />
-      <Footer />
     </div>
   );
 };
