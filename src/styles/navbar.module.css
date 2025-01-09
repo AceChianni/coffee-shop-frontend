@@ -1,4 +1,4 @@
-/* styles/navbar.module.css */
+/* src/styles/navbar.module.css */
 
 /* Basic navbar container */
 .navbar {
@@ -12,6 +12,10 @@
 }
 
 /* Navbar links */
+.links {
+  display: flex;
+}
+
 .link {
   color: #F4E1C1; /* Light beige for link text */
   font-size: 1rem;
