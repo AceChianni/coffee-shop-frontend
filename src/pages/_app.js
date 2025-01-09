@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
       <div className="pt-20"></div>
       <Component {...pageProps} />
+      
     </div>
   );
 }
