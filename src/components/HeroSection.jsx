@@ -9,8 +9,8 @@ const HeroSection = () => {
       style={{ backgroundImage: 'url(/coffeeshop.jpg)' }} 
     >
       <div>
-        <h2 className="text-4xl font-bold">Your Favorite Coffee Awaits</h2>
-        <p className="mt-4 text-lg">Discover the best coffee in town, brewed just for you.</p>
+        <h2 className="text-4xl font-bold">Fuel your imagination</h2>
+        <p className="mt-4 text-lg">Where the coffee is always fresh and the books are always good.</p>
         <Button label="Order Now" handleClick={() => alert('Order Now clicked!')} />
       </div>
     </section>
