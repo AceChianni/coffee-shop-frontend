@@ -10,7 +10,11 @@ export default function CartPage() {
     // Check if there are any items saved in localStorage and load them
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+      try {
+        setCartItems(JSON.parse(savedCart));
+      } catch (error) {
+        console.error("Error loading cart from localStorage", error);
+      }
     }
   }, []); 
 
@@ -39,7 +43,7 @@ export default function CartPage() {
       <main className="container mx-auto p-8 flex flex-col gap-8">
         <h1 className="text-3xl font-semibold mb-6">Your Cart</h1>
         {cartItems.length === 0 ? (
-          <p>Your cart is empty</p> 
+          <p>Your cart is empty</p>
         ) : (
           <div className="flex flex-col gap-6">
             {cartItems.map((item) => (
