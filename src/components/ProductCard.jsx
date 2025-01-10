@@ -13,7 +13,7 @@ export default function ProductCard({ product, handleAddToCart }) {
       />
       <div className="flex flex-col flex-grow">
         <h3 className="text-xl font-semibold">{product.name}</h3>
-        <p className="text-gray-600 mb-4">{product.description}</p>
+        <p className="text-600 mb-4">{product.description}</p>
         <p className="text-lg font-bold mb-4">${product.price}</p>
       </div>
       <Button label="Add to Cart" handleClick={() => handleAddToCart(product)} />

@@ -5,7 +5,7 @@
     "price": 2.5,
     "category": "Beverage",
     "stock": 10,
-    "imageUrl": "/sample-images/espresso.jpg",
+    "imageUrl": "/productimages/espresso.jpg",
     "_id": 0
   },
   {
@@ -14,7 +14,7 @@
     "price": 3.5,
     "category": "Beverage",
     "stock": 5,
-    "imageUrl": "/sample-images/cappuccino.jpg",
+    "imageUrl": "/productimages/cappuccino.jpg",
     "_id": 1
   },
   {
@@ -23,16 +23,16 @@
     "price": 2,
     "category": "Food",
     "stock": 8,
-    "imageUrl": "/sample-images/croissant.jpg",
+    "imageUrl": "/productimages/croissant.jpg",
     "_id": 2
   },
   {
-    "name": "Muffin",
-    "description": "A small, sweet baked good that is typically made with ingredients such as flour, sugar, eggs, and butter.",
+    "name": "Blueberry Muffin",
+    "description": "A small, sweet baked muffin with freshly picked berries",
     "price": 2.5,
     "category": "Food",
     "stock": 6,
-    "imageUrl": "/sample-images/muffin.jpg",
+    "imageUrl": "/productimages/blueberrymuffin.jpg",
     "_id": 3
   }
 ]
