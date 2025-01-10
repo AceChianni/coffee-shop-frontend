@@ -1,3 +1,5 @@
+// /src/pages/signup.jsx
+
 import { useRouter } from 'next/router';
 import SignupForm from '../components/SignupForm';
 import Navbar from '../components/Navbar';

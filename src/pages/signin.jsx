@@ -1,7 +1,7 @@
+// /src/pages/signin.jsx
+
 import { useRouter } from 'next/router';
 import LoginForm from '../components/LoginForm';
-// import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
 
 export default function Signin() {
   const router = useRouter();
