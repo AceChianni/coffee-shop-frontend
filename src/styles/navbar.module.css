@@ -1,9 +1,7 @@
-/* src/styles/navbar.module.css */
-
-/* Basic navbar container */
+/* Navbar container */
 .navbar {
-  background-color: #C97A3B; /* primary color */
-  color: #FFF9E6; /* Light background for text contrast */
+  background-color: var(--primary); /* Dynamic based on mode */
+  color: var(--text-primary); /* Dynamic text color */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,45 +10,27 @@
 }
 
 /* Navbar links */
-.links {
-  display: flex;
-}
-
 .link {
-  color: #F4E1C1; /* Light beige for link text */
+  color: var(--text-secondary); /* Muted olive */
   font-size: 1rem;
   margin: 0 15px;
   transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: #D18F6B; /* Accent color on hover */
+  color: var(--accent); /* Terracotta on hover */
 }
 
-/* Navbar button (if needed, for theme switch) */
-.button {
-  background-color: #F0A77B; /* Light amber */
-  color: #1A1A1A; /* Dark text for button */
+/* Theme toggle button */
+.themeToggle button {
+  font-size: 1.5rem; /* Icon size */
+  background: none;
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+  color: var(--text-primary); /* Consistent with text */
+  transition: color 0.3s ease;
 }
 
-.button:hover {
-  background-color: #D5854A; /* Darker amber on hover */
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .link {
-    margin: 5px 0;
-  }
+.themeToggle button:hover {
+  color: var(--accent); /* Accent on hover */
 }

@@ -1,4 +1,4 @@
-// // /src/pages/index.jsx
+// /src/pages/index.jsx
 
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
