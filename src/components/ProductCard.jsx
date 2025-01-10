@@ -1,4 +1,4 @@
-// /src/components/ProductCard.jsx
+// src/components/ProductCard.jsx
 
 import PropTypes from 'prop-types';
 import Button from './Button';

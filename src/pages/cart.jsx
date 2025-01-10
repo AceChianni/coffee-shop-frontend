@@ -7,24 +7,31 @@ export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    // Clear the cart on page load to avoid preloaded items
-    setCartItems([]);
-
-    // check if there are any items saved in localStorage and load them
+    // Check if there are any items saved in localStorage and load them
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       setCartItems(JSON.parse(savedCart));
     }
   }, []); 
+
   const handleRemoveFromCart = (productId) => {
-    // Filter out the item to be removed
     const updatedCart = cartItems.filter((item) => item._id !== productId);
     setCartItems(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Save updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); 
+  };
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    const updatedCart = cartItems.map((item) =>
+      item._id === productId ? { ...item, quantity: newQuantity } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); 
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+    return cartItems
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
   };
 
   return (
@@ -40,6 +47,7 @@ export default function CartPage() {
                 key={item._id}
                 item={item}
                 handleRemoveFromCart={handleRemoveFromCart}
+                handleQuantityChange={handleQuantityChange} 
               />
             ))}
           </div>

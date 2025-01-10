@@ -1,4 +1,4 @@
-// // /src/pages/products/index.jsx
+// src/pages/products/index.jsx
 
 import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
@@ -19,13 +19,22 @@ const Products = () => {
 
   // Handle add to cart
   const handleAddToCart = (product) => {
-    console.log(`${product.name} added to cart!`);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProductIndex = cart.findIndex((item) => item._id === product._id);
+    
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1; 
+    } else {
+      cart.push({ ...product, quantity: 1 }); 
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart)); 
     alert(`${product.name} added to cart!`);
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-       <header className="bg-primary text-white p-4">
+      <header className="bg-primary text-white p-4">
         <h2 className="text-2xl flex justify-center"> Inkspresso Menu </h2>
       </header>
       <main className="container mx-auto p-8">
