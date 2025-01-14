@@ -1,20 +1,10 @@
-// /src/components/CartSummary.jsx
-// const CartSummary = ({ total }) => {
-//     return (
-//       <div className="p-4">
-//         <h2 className="text-2xl">Cart Summary</h2>
-//         <p>Total: ${total}</p>
-//       </div>
-//     );
-//   }
-  
-//   export default CartSummary;
-  
-
 // src/components/CartSummary.jsx
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router'; 
 
 const CartSummary = ({ cartItems, total }) => {
+  const router = useRouter(); 
+
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Cart Summary</h2>
@@ -42,13 +32,21 @@ const CartSummary = ({ cartItems, total }) => {
         <span>Total:</span>
         <span>${total}</span>
       </div>
+
+      {/* Edit Cart Button */}
+      <button
+        className="mt-4 bg-orange-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+        onClick={() => router.push('/cart/cart')}
+      >
+        Edit Cart
+      </button>
     </div>
   );
-}
+};
 
 CartSummary.propTypes = {
   cartItems: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired
-}
+  total: PropTypes.number.isRequired,
+};
 
 export default CartSummary;

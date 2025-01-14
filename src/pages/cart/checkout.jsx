@@ -1,4 +1,5 @@
 // src/pages/cart/checkout.jsx
+
 import CheckoutForm from '../../components/CheckoutForm';
 import { useState, useEffect } from 'react';
 
@@ -23,6 +24,9 @@ export default function CheckoutPage() {
     setCartItems([]);
   };
 
+  const calculateTotal = () =>
+    cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-secondary text-white p-4">
@@ -30,7 +34,8 @@ export default function CheckoutPage() {
       </header>
       <main className="container mx-auto p-8 flex flex-col gap-8">
         <CheckoutForm 
-          cartItems={cartItems} 
+          cart={cartItems} 
+          total={calculateTotal()} 
           handleBuyNow={handleBuyNow} 
         />
       </main>

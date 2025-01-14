@@ -1,52 +1,84 @@
 // src/components/CheckoutForm.jsx
-
 import PropTypes from 'prop-types';
+import CartSummary from './CartSummary';
+import { useState } from 'react';
 
-export default function CheckoutForm({ cart = [], handleBuyNow }) {
-  // Calculate total price from cart items
-  const calculateTotal = () =>
-    cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+export default function CheckoutForm({ cart, total, handleBuyNow }) {
+  const [shippingInfo, setShippingInfo] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    phoneNumber: '',
+  });
+
+  const [paymentInfo, setPaymentInfo] = useState({
+    cardholderName: '',
+    cardNumber: '',
+    expirationDate: '',
+    cvv: '',
+  });
+
+  const handleShippingChange = (field, value) => {
+    setShippingInfo((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handlePaymentChange = (field, value) => {
+    setPaymentInfo((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Shipping Info:', shippingInfo);
+    console.log('Payment Info:', paymentInfo);
+    console.log('Cart Total:', total);
+    handleBuyNow();
+  };
 
   return (
     <div className="checkout-page bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 grid gap-8 md:grid-cols-2">
         {/* Cart Summary */}
-        <div className="cart-summary">
-          <h2 className="text-2xl font-bold text-gray-700 mb-4">Cart Summary</h2>
-          <ul className="space-y-4">
-            {cart.length === 0 ? (
-              <li className="text-gray-500">Your cart is empty.</li>
-            ) : (
-              cart.map((item) => (
-                <li key={item.id} className="flex justify-between items-center border-b pb-2">
-                  <div>
-                    <span className="text-gray-700 font-medium">{item.name}</span>
-                    <span className="block text-sm text-gray-500">Qty: {item.quantity}</span>
-                  </div>
-                  <span className="text-gray-700 font-semibold">
-                    ${(item.price * item.quantity).toFixed(2)}
-                  </span>
-                </li>
-              ))
-            )}
-          </ul>
-          <div className="flex justify-between items-center mt-4 text-lg font-bold">
-            <span>Total:</span>
-            <span>${calculateTotal()}</span>
-          </div>
-        </div>
+        <CartSummary cartItems={cart} total={parseFloat(total)} />
 
         {/* Checkout Form */}
-        <form className="flex flex-col gap-6">
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
           {/* Shipping Details */}
           <div>
             <h2 className="text-2xl font-bold text-gray-700 mb-4">Shipping Details</h2>
+
             <label className="flex flex-col">
+              <span className="font-medium text-gray-700">First Name:</span>
+              <input
+                type="text"
+                value={shippingInfo.firstName}
+                onChange={(e) => handleShippingChange('firstName', e.target.value)}
+                placeholder="Enter your first name"
+                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </label>
+
+            <label className="flex flex-col mt-4">
+              <span className="font-medium text-gray-700">Last Name:</span>
+              <input
+                type="text"
+                value={shippingInfo.lastName}
+                onChange={(e) => handleShippingChange('lastName', e.target.value)}
+                placeholder="Enter your last name"
+                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </label>
+
+            <label className="flex flex-col mt-4">
               <span className="font-medium text-gray-700">Address:</span>
               <input
                 type="text"
+                value={shippingInfo.address}
+                onChange={(e) => handleShippingChange('address', e.target.value)}
                 placeholder="Enter your address"
                 className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
               />
             </label>
 
@@ -54,8 +86,11 @@ export default function CheckoutForm({ cart = [], handleBuyNow }) {
               <span className="font-medium text-gray-700">Phone Number:</span>
               <input
                 type="tel"
+                value={shippingInfo.phoneNumber}
+                onChange={(e) => handleShippingChange('phoneNumber', e.target.value)}
                 placeholder="Enter your phone number"
                 className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
               />
             </label>
           </div>
@@ -63,12 +98,28 @@ export default function CheckoutForm({ cart = [], handleBuyNow }) {
           {/* Payment Details */}
           <div>
             <h2 className="text-2xl font-bold text-gray-700 mb-4">Payment Details</h2>
+
             <label className="flex flex-col">
+              <span className="font-medium text-gray-700">Cardholder Name:</span>
+              <input
+                type="text"
+                value={paymentInfo.cardholderName}
+                onChange={(e) => handlePaymentChange('cardholderName', e.target.value)}
+                placeholder="Enter cardholder name"
+                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </label>
+
+            <label className="flex flex-col mt-4">
               <span className="font-medium text-gray-700">Card Number:</span>
               <input
                 type="text"
+                value={paymentInfo.cardNumber}
+                onChange={(e) => handlePaymentChange('cardNumber', e.target.value)}
                 placeholder="1234 5678 9123 4567"
                 className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
               />
             </label>
 
@@ -77,16 +128,23 @@ export default function CheckoutForm({ cart = [], handleBuyNow }) {
                 <span className="font-medium text-gray-700">Expiration Date:</span>
                 <input
                   type="text"
+                  value={paymentInfo.expirationDate}
+                  onChange={(e) => handlePaymentChange('expirationDate', e.target.value)}
                   placeholder="MM/YY"
                   className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  required
                 />
               </label>
+
               <label className="flex flex-col flex-1">
                 <span className="font-medium text-gray-700">CVV:</span>
                 <input
                   type="text"
+                  value={paymentInfo.cvv}
+                  onChange={(e) => handlePaymentChange('cvv', e.target.value)}
                   placeholder="123"
                   className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  required
                 />
               </label>
             </div>
@@ -94,9 +152,8 @@ export default function CheckoutForm({ cart = [], handleBuyNow }) {
 
           {/* Buy Now Button */}
           <button
-            type="button"
+            type="submit"
             className="bg-green-500 text-white py-3 px-6 rounded-full text-lg font-semibold hover:bg-green-700"
-            onClick={handleBuyNow}
           >
             Buy Now
           </button>
@@ -115,5 +172,6 @@ CheckoutForm.propTypes = {
       quantity: PropTypes.number.isRequired,
     })
   ).isRequired,
+  total: PropTypes.string.isRequired,
   handleBuyNow: PropTypes.func.isRequired,
 };

@@ -60,7 +60,7 @@ export default function CartPage() {
           <div className="mt-8 flex justify-between items-center">
             <p className="text-lg font-semibold">Total: ${getTotalPrice()}</p>
             <Link href="/cart/checkout">
-              <button className="bg-green-500 text-white py-2 px-6 rounded-full text-lg font-semibold hover:bg-green-700">
+              <button className="bg-orange-500 text-white py-2 px-6 rounded-full text-lg font-semibold hover:bg-green-700">
                 Checkout
               </button>
             </Link>
