@@ -1,7 +1,7 @@
 // /backend/controllers/authController.js
-import User from '../models/User';
+import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
-import { generateToken } from '../utils/authUtils';
+import { generateToken } from '../utils/authUtils.js';
 
 export const signup = async (req, res) => {
   const { username, email, password } = req.body;

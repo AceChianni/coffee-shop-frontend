@@ -1,9 +1,12 @@
 // /backend/server.js
 import express from 'express';
-import connectToDatabase from './lib/mongodb';
-import authRoutes from './routes/authRoutes';
-import productRoutes from './routes/productRoutes';
+import connectToDatabase from './lib/mongodb.js';
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import cors from 'cors';
+
+import dotenv from 'dotenv';  
+dotenv.config({ path: '.env.local' });
 
 const app = express();
 
@@ -13,7 +16,12 @@ app.use(cors());
 // Connect to MongoDB
 connectToDatabase();
 
-// Set up routes
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Coffee Shop Backend API!');
+});
+
+// Set up API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 

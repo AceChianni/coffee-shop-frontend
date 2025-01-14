@@ -1,6 +1,6 @@
 // /backend/routes/productRoutes.js
 import express from 'express';
-import { createProduct, updateProduct, deleteProduct, getAllProducts } from '../controllers/productController';
+import { createProduct, updateProduct, deleteProduct, getAllProducts } from '../controllers/productController.js';
 
 const router = express.Router();
 
