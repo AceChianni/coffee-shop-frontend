@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/router';
 import LoginForm from '../components/LoginForm';
-import { validateUser } from '../utils/authUtils';
+import { validateUser } from '../../utils/authUtils';
 
 export default function Signin() {
   const router = useRouter();

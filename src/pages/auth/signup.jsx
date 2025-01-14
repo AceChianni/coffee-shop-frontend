@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/router';
 import SignupForm from '../components/SignupForm';
-import { saveUser, getUsers } from '../utils/authUtils';
+import { saveUser, getUsers } from '../../utils/authUtils';
 
 export default function Signup() {
   const router = useRouter();
