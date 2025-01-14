@@ -1,10 +1,14 @@
 // /backend/routes/authRoutes.js
 import express from 'express';
-import { signup, login } from '../controllers/authController';
 
 const router = express.Router();
 
-router.post('/signup', signup);
-router.post('/login', login);
+// Define authentication routes here
+router.post('/login', (req, res) => {
+});
+
+router.post('/register', (req, res) => {
+
+});
 
 export default router;
