@@ -1,13 +1,11 @@
-// /src/lib/mongodb.js
-
+// /backend/lib/mongodb.js
 import mongoose from 'mongoose';
 
 const connectToDatabase = async () => {
   if (mongoose.connections[0].readyState) {
-    // If already connected, return the connection
-    return;
+    return; // already connected
   }
-  // Otherwise, connect to MongoDB
+
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
