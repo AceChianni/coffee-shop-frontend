@@ -1,7 +1,7 @@
-// /src/pages/signup.jsx
+// /src/pages/auth/signup.jsx
 
 import { useRouter } from 'next/router';
-import SignupForm from '../components/SignupForm';
+import SignupForm from '../../components/SignupForm';
 import { saveUser, getUsers } from '../../utils/authUtils';
 
 export default function Signup() {

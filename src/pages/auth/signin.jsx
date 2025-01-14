@@ -1,7 +1,7 @@
-// /src/pages/signin.jsx
+// /src/pages/auth/signin.jsx
 
 import { useRouter } from 'next/router';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../../components/LoginForm';
 import { validateUser } from '../../utils/authUtils';
 
 export default function Signin() {

@@ -1,4 +1,4 @@
-// src/pages/cart.jsx
+// src/pages/cart/cart.jsx
 import { useState, useEffect } from 'react';
 import CartItem from '@/components/CartItem';
 import Link from 'next/link';
@@ -59,7 +59,7 @@ export default function CartPage() {
         {cartItems.length > 0 && (
           <div className="mt-8 flex justify-between items-center">
             <p className="text-lg font-semibold">Total: ${getTotalPrice()}</p>
-            <Link href="/checkout">
+            <Link href="/cart/checkout">
               <button className="bg-green-500 text-white py-2 px-6 rounded-full text-lg font-semibold hover:bg-green-700">
                 Checkout
               </button>
