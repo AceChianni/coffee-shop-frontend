@@ -1,6 +1,5 @@
 // /src/components/LoginForm.jsx
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function LoginForm({ buttonLabel, handleLogin }) {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -17,7 +16,7 @@ export default function LoginForm({ buttonLabel, handleLogin }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label>
+      <label style={{ color: '#6E4B3A' }}>
         Email:
         <input
           type="email"
@@ -28,7 +27,7 @@ export default function LoginForm({ buttonLabel, handleLogin }) {
           className="border p-2 rounded w-full"
         />
       </label>
-      <label>
+      <label style={{ color: '#6E4B3A' }}>
         Password:
         <input
           type="password"
@@ -41,7 +40,8 @@ export default function LoginForm({ buttonLabel, handleLogin }) {
       </label>
       <button
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        className="py-2 px-4 rounded hover:opacity-90 transition-all"
+        style={{ backgroundColor: '#6E4B3A', color: '#F1F7ED' }}
       >
         {buttonLabel}
       </button>

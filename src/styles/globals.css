@@ -1,8 +1,9 @@
-/* globals.css */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import 'tailwindcss/tailwind.css';
+
 
 /* Default light mode styling */
 html, body {
@@ -11,27 +12,32 @@ html, body {
 
 /* Dark mode styling */
 [data-theme='dark'] {
-  @apply bg-base-dark text-text-light; /* Dark mode */
+  @apply bg-base-dark text-base-content; /* Dark mode */
 }
 
+/* Navbar */
+.navbar {
+  @apply flex justify-between items-center p-4;
+}
+
+/* Main content container */
 .main-container {
-  @apply flex flex-col min-h-screen;
+  @apply flex flex-col min-h-screen; /* Light mode background */
 }
 
+/* Main content area */
 main {
   @apply flex-1;
+  background-color: theme('colors.base-100'); /* Default light mode background */
 }
 
+/* Dark mode background */
+[data-theme='dark'] main {
+  background-color: theme('colors.base-dark'); /* Dark mode background */
+}
+
+/* Footer for dark mode */
 footer {
-  @apply bg-base-dark text-text-light text-center py-4; /* Footer for dark mode */
+  @apply bg-base-dark text-white text-center py-4;
 }
 
-/* Custom utilities */
-@layer utilities {
-  .text-primary {
-    @apply text-text-primary;
-  }
-  .text-light {
-    @apply text-text-light;
-  }
-}

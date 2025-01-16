@@ -1,7 +1,5 @@
 /* Navbar container */
 .navbar {
-  background-color: var(--primary); /* Dynamic based on mode */
-  color: var(--text-primary); /* Dynamic text color */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,16 +7,35 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Light mode */
+.navbar.light {
+  background-color: #436436; /* light mode background */
+  color: #6E4B3A; /* Text color for light mode */
+}
+
+/* Dark mode */
+.navbar.dark {
+  background-color: #6D2E46; /* Dark background */
+  color: #F1F7ED; /* Text color for dark mode */
+}
+
 /* Navbar links */
 .link {
-  color: var(--text-secondary); /* Muted olive */
+  color: #6E4B3A; /* Base text */
   font-size: 1rem;
   margin: 0 15px;
   transition: color 0.3s ease;
 }
 
+/* Ensure enough contrast on base text */
+.link {
+  color: #F1F7ED; /* Base text with enough contrast */
+  font-weight: 500;
+}
+
+/* Hover states */
 .link:hover {
-  color: var(--accent); /* Terracotta on hover */
+  color: #FBD896; /* Light accent on hover for both modes */
 }
 
 /* Theme toggle button */
@@ -27,10 +44,35 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-primary); /* Consistent with text */
+  color: #F1F7ED; /* Consistent text color */
   transition: color 0.3s ease;
 }
 
+/* Hover state for buttons */
 .themeToggle button:hover {
-  color: var(--accent); /* Accent on hover */
+  color: #FBD896; /* Light accent on hover */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: #436436; /* Dark background */
+    color: #F1F7ED; /* Text for dark mode */
+  }
+
+  .link {
+    color: #F1F7ED; /* Base text for dark mode */
+  }
+
+  .link:hover {
+    color: #FBD896; /* Light accent on hover for dark mode */
+  }
+
+  .themeToggle button {
+    color: #F1F7ED; /* Dark mode text */
+  }
+
+  .themeToggle button:hover {
+    color: #FBD896; /* Dark mode accent on hover */
+  }
 }

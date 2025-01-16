@@ -5,7 +5,7 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
     return (
-        <div data-theme="mytheme" className="main-container">
+        <div data-theme="light" className="main-container">
             <Navbar />
             <main className="pt-20">
                 <Component {...pageProps} />
