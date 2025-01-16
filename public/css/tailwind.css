@@ -1955,6 +1955,11 @@ html {
   background-color: rgb(109 46 70 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[\#6E4B3A\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 75 58 / var(--tw-bg-opacity, 1));
+}
+
 .bg-\[\#BB9BB0\] {
   --tw-bg-opacity: 1;
   background-color: rgb(187 155 176 / var(--tw-bg-opacity, 1));
@@ -2232,6 +2237,169 @@ html {
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+@import 'tailwindcss/tailwind.css';
+
+/* Default light mode styling */
+
+html, body {
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 247 237 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(51 51 51 / var(--tw-text-opacity, 1));
+  /* Light mode */
+}
+
+/* Dark mode styling */
+
+[data-theme='dark'] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(27 81 45 / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1)));
+  /* Dark mode */
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* Main content container */
+
+.main-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  /* Light mode background */
+}
+
+/* Main content area */
+
+main {
+  flex: 1 1 0%;
+  background-color: #F1F7ED;
+  /* Default light mode background */
+}
+
+/* Dark mode background */
+
+[data-theme='dark'] main {
+  background-color: #1B512D;
+  /* Dark mode background */
+}
+
+/* Footer for dark mode */
+
+footer {
+  --tw-bg-opacity: 1;
+  background-color: rgb(27 81 45 / var(--tw-bg-opacity, 1));
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+/* Navbar specific CSS */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.light {
+  background-color: #436436;
+  /* Light mode background */
+  color: #6E4B3A;
+  /* Text color for light mode */
+}
+
+.navbar.dark {
+  background-color: #6E4B3A;
+  /* Dark background */
+  color: #F1F7ED;
+  /* Text color for dark mode */
+}
+
+/* Navbar links */
+
+.link {
+  color: #6E4B3A;
+  /* Base text */
+  font-size: 1rem;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+  color: #F1F7ED;
+  /* Base text with enough contrast */
+  font-weight: 500;
+}
+
+/* Hover states */
+
+.link:hover {
+  color: #FBD896;
+  /* Light accent on hover for both modes */
+}
+
+/* Theme toggle button */
+
+.themeToggle button {
+  font-size: 1.5rem;
+  /* Icon size */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #F1F7ED;
+  /* Consistent text color */
+  transition: color 0.3s ease;
+}
+
+/* Hover state for buttons */
+
+.themeToggle button:hover {
+  color: #FBD896;
+  /* Light accent on hover */
+}
+
+/* Dark mode overrides */
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: #6E4B3A;
+    /* Dark background */
+    color: #F1F7ED;
+    /* Text for dark mode */
+  }
+
+  .link {
+    color: #F1F7ED;
+    /* Base text for dark mode */
+  }
+
+  .link:hover {
+    color: #FBD896;
+    /* Light accent on hover for dark mode */
+  }
+
+  .themeToggle button {
+    color: #F1F7ED;
+    /* Dark mode text */
+  }
+
+  .themeToggle button:hover {
+    color: #FBD896;
+    /* Dark mode accent on hover */
+  }
 }
 
 .hover\:bg-accent:hover {

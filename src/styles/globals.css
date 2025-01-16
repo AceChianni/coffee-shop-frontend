@@ -4,7 +4,6 @@
 
 @import 'tailwindcss/tailwind.css';
 
-
 /* Default light mode styling */
 html, body {
   @apply h-full bg-base-100 text-text-primary; /* Light mode */
@@ -41,3 +40,78 @@ footer {
   @apply bg-base-dark text-white text-center py-4;
 }
 
+/* Navbar specific CSS */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.light {
+  background-color: #436436; /* Light mode background */
+  color: #6E4B3A; /* Text color for light mode */
+}
+
+.navbar.dark {
+  background-color: #6E4B3A; /* Dark background */
+  color: #F1F7ED; /* Text color for dark mode */
+}
+
+/* Navbar links */
+.link {
+  color: #6E4B3A; /* Base text */
+  font-size: 1rem;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.link {
+  color: #F1F7ED; /* Base text with enough contrast */
+  font-weight: 500;
+}
+
+/* Hover states */
+.link:hover {
+  color: #FBD896; /* Light accent on hover for both modes */
+}
+
+/* Theme toggle button */
+.themeToggle button {
+  font-size: 1.5rem; /* Icon size */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #F1F7ED; /* Consistent text color */
+  transition: color 0.3s ease;
+}
+
+/* Hover state for buttons */
+.themeToggle button:hover {
+  color: #FBD896; /* Light accent on hover */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background-color: #6E4B3A; /* Dark background */
+    color: #F1F7ED; /* Text for dark mode */
+  }
+
+  .link {
+    color: #F1F7ED; /* Base text for dark mode */
+  }
+
+  .link:hover {
+    color: #FBD896; /* Light accent on hover for dark mode */
+  }
+
+  .themeToggle button {
+    color: #F1F7ED; /* Dark mode text */
+  }
+
+  .themeToggle button:hover {
+    color: #FBD896; /* Dark mode accent on hover */
+  }
+}
