@@ -2,40 +2,36 @@
 
 import { useRouter } from 'next/router';
 import SignupForm from '../../components/SignupForm';
-import { saveUser, getUsers } from '../../utils/authUtils';
 
 export default function Signup() {
   const router = useRouter();
 
-  function handleSignup(formData) {
-    // Check if all fields are filled
+  async function handleSignup(formData) {
     if (!formData.username || !formData.email || !formData.password) {
       alert('Please fill in all the fields.');
       return;
     }
 
-    // Validate password strength
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{6,}$/;
-    if (!passwordRegex.test(formData.password)) {
-      alert(
-        'Password must be at least 6 characters long, contain one number, and one special character.'
-      );
-      return;
+    try {
+      const response = await fetch('https://bug-free-orbit-q777wx69x44wc95qp-5000.app.github.dev/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Registration successful!');
+        router.push('/auth/signin');
+      } else {
+        alert(data.message || 'Registration failed.');
+      }
+    } catch (err) {
+      console.error('Error during signup request:', err);
+      alert('An error occurred while processing your request.');
     }
-
-    // Check for existing user
-    const users = getUsers();
-    const existingUser = users.find((u) => u.email === formData.email);
-
-    if (existingUser) {
-      alert('This email is already registered.');
-      return;
-    }
-
-    // Save new user
-    saveUser(formData);
-    alert('Registration successful!');
-    router.push('/signin');
   }
 
   return (
