@@ -1,0 +1,26 @@
+/* src/styles/sign.module.css */
+
+/* Sign In Button */
+.signin-btn {
+  background-color: #F89C42; /* Sunset orange for primary button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signin-btn:hover {
+  background-color: #F56C00; /* Darker sunset color for hover */
+}
+
+/* Sign Up Link */
+.signup-link a {
+  color: #F89C42; /* Sunset color for links */
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
