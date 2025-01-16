@@ -1,6 +1,7 @@
 // src/pages/products/[id].jsx
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Button from '../../components/Button'; // Assuming Button is a reusable component
 
 export default function ProductPage() {
   const [product, setProduct] = useState(null);
@@ -20,8 +21,8 @@ export default function ProductPage() {
   if (!product) return <p>Loading...</p>;
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header>{/* Header component */}</header>
+    <div className="min-h-screen flex flex-col bg-base-100 dark:bg-base-dark">
+      <header>{/* Add your header component here */}</header>
       <main className="container mx-auto p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <img
@@ -30,10 +31,20 @@ export default function ProductPage() {
             className="w-full md:w-1/2 h-auto object-cover rounded-lg"
           />
           <div className="flex flex-col w-full md:w-1/2">
-            <h1 className="text-3xl font-semibold mb-4">{product.name}</h1>
-            <p className="text-lg mb-4">{product.description}</p>
-            <p className="text-xl font-bold mb-4">${product.price}</p>
-            <Button label="Add to Cart" handleClick={() => alert(`${product.name} added to cart!`)} />
+            {/* Updated colors */}
+            <h1 className="text-3xl font-semibold mb-4 text-primary dark:text-accent">
+              {product.name}
+            </h1>
+            <p className="text-lg mb-4 text-text-primary dark:text-neutral">
+              {product.description}
+            </p>
+            <p className="text-xl font-bold mb-4 text-secondary dark:text-sunset-light">
+              ${product.price}
+            </p>
+            <Button
+              label="Add to Cart"
+              handleClick={() => alert(`${product.name} added to cart!`)}
+            />
           </div>
         </div>
       </main>

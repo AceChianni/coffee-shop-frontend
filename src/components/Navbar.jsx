@@ -18,7 +18,7 @@ const Navbar = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Save theme to localStorage
+    localStorage.setItem('theme', newTheme);
   };
 
   return (

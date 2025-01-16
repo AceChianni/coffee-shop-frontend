@@ -2,19 +2,24 @@
 
 import { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
-import Modal from '../../components/Modal'; 
+import Modal from '../../components/Modal';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [modalMessage, setModalMessage] = useState(''); 
+  const [modalMessage, setModalMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   // Fetch product data from mock file
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/mocks/products.json');
-      const data = await response.json();
-      setProducts(data);
+      try {
+        const response = await fetch('/mocks/products.json');
+        if (!response.ok) throw new Error('Failed to fetch products');
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error(error.message);
+      }
     };
 
     fetchData();
@@ -22,20 +27,20 @@ const Products = () => {
 
   // Handle add to cart
   const handleAddToCart = (product) => {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingProductIndex = cart.findIndex((item) => item._id === product._id);
-    
+
     if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quantity += 1; 
+      cart[existingProductIndex].quantity += 1;
     } else {
-      cart.push({ ...product, quantity: 1 }); 
+      cart.push({ ...product, quantity: 1 });
     }
-    
+
     localStorage.setItem('cart', JSON.stringify(cart));
 
     // Show modal with the message
     setModalMessage(`${product.name} added to cart!`);
-    setShowModal(true); 
+    setShowModal(true);
   };
 
   // Close the modal

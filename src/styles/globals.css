@@ -1,13 +1,17 @@
+/* globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Default light mode styling */
 html, body {
-  @apply h-full bg-base-100 text-primary; /* Light mode */
+  @apply h-full bg-base-100 text-text-primary; /* Light mode */
 }
 
+/* Dark mode styling */
 [data-theme='dark'] {
-  @apply bg-base-dark text-light; /* Dark mode */
+  @apply bg-base-dark text-text-light; /* Dark mode */
 }
 
 .main-container {
@@ -19,7 +23,7 @@ main {
 }
 
 footer {
-  @apply bg-base-dark text-light text-center py-4; /* Footer for dark mode */
+  @apply bg-base-dark text-text-light text-center py-4; /* Footer for dark mode */
 }
 
 /* Custom utilities */
