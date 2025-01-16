@@ -37,9 +37,6 @@ const Navbar = () => {
         <Link href="/auth/signin" className={`${styles.link} hover:text-orange-500`}>
           Sign In
         </Link>
-        {/* <Link href="/auth/signup" className={`${styles.link} hover:text-orange-500`}>
-          Sign Up
-        </Link> */}
       </div>
 
       {/* Theme Toggle Button */}
