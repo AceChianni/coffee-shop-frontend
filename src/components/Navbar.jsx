@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`flex justify-between items-center p-4 ${theme === 'dark' ? 'bg-base-dark text-text-light' : 'bg-[#6D2E46] text-[#6E4B3A]'}`}>
+    <nav className={`flex justify-between items-center p-4 ${theme === 'dark' ? 'bg-base-dark text-text-light' : 'bg-[#6E4B3A] text-[#6E4B3A]'}`}>
       <div className={`flex space-x-6 ${theme === 'dark' ? 'text-[#F1F7ED]' : 'text-[#6E4B3A]'}`}>
         <Link href="/" className={styles.link}>
           Home
