@@ -11,7 +11,7 @@ const app = express();
 // Configure CORS
 app.use(
   cors({
-    origin: 'https://bug-free-orbit-q777wx69x44wc95qp-3000.app.github.dev', // Your frontend URL
+    origin: 'https://bug-free-orbit-q777wx69x44wc95qp-3000.app.github.dev',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
