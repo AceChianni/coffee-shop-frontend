@@ -1,74 +1,99 @@
-// src/components/Navbar.jsx
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import styles from '../styles/navbar.module.css';
+// // /src/components/Navbar.jsx
+// import { useState } from 'react';
+// import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+// import Link from 'next/link';  // Import Link component
+
+// const Navbar = () => {
+//   const [theme, setTheme] = useState('light');
+
+//   // Toggle theme function
+//   const toggleTheme = () => {
+//     const newTheme = theme === 'light' ? 'dark' : 'light';
+//     setTheme(newTheme);
+//     document.documentElement.setAttribute('data-theme', newTheme);
+//     localStorage.setItem('theme', newTheme);
+//   };
+
+//   return (
+//     <nav className={`flex justify-between items-center p-4 ${theme === 'dark' ? 'bg-base-dark text-text-light' : 'bg-[#6E4B3A] text-text-dark'}`}>
+//       <div className={`flex space-x-6 ${theme === 'dark' ? 'text-text-light' : 'text-text-dark'}`}>
+//         {/* Navigation Links */}
+//         <Link href="/" className="text-link dark:text-link-dark">Home</Link>
+//         <Link href="/products" className="text-link dark:text-link-dark">Menu</Link>
+//         <Link href="/cart/cart" className="text-link dark:text-link-dark">Cart</Link>
+//         <Link href="/auth/signin" className="text-link dark:text-link-dark">Sign In</Link>
+//       </div>
+
+//       {/* Theme Toggle Button */}
+//       <div className="relative">
+//         <button
+//           onClick={toggleTheme}
+//           aria-label="Toggle Theme"
+//           className={`w-10 h-10 rounded-full flex justify-center items-center border-2 ${theme === 'dark' ? 'border-gray-600 bg-gray-800' : 'border-gray-400 bg-gray-200'} hover:bg-gray-300 dark:hover:bg-gray-700 transition-all`}
+//         >
+//           {theme === 'light' ? (
+          //   <BsFillSunFill className="w-6 h-6 text-yellow-500" />
+          // ) : (
+          //   <BsFillMoonFill className="w-6 h-6 text-white" />
+//           )}
+//         </button>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// /src/components/Navbar.jsx
+// /src/components/Navbar.jsx
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+
 
 const Navbar = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState("sunset"); // Default theme
 
-  // Load theme from localStorage on initial render
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
+    document.documentElement.setAttribute("data-theme", theme);
+    if (theme === "dim") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    setTheme((prevTheme) => (prevTheme === "sunset" ? "dim" : "sunset"));
   };
 
   return (
-    <nav className={`flex justify-between items-center p-4 ${theme === 'dark' ? 'bg-base-dark text-text-light' : 'bg-[#6E4B3A] text-[#6E4B3A]'}`}>
-      <div className={`flex space-x-6 ${theme === 'dark' ? 'text-[#F1F7ED]' : 'text-[#6E4B3A]'}`}>
-        <Link href="/" className={styles.link}>
+    <nav className="navbar bg-primary text-base-content p-4 flex justify-between items-center">
+      {/* Navigation Links */}
+      <div className="flex space-x-6">
+        <Link href="/" className="hover:underline">
           Home
         </Link>
-        <Link href="/products" className={styles.link}>
+        <Link href="/products" className="hover:underline">
           Menu
         </Link>
-        <Link href="/cart/cart" className={styles.link}>
+        <Link href="/cart/cart" className="hover:underline">
           Cart
         </Link>
-        <Link href="/auth/signin" className={styles.link}>
+        <Link href="/auth/signin" className="hover:underline">
           Sign In
         </Link>
       </div>
 
       {/* Theme Toggle Button */}
-      <div className="relative">
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle Theme"
-          className={`w-10 h-10 rounded-full flex justify-center items-center border-2 ${theme === 'dark' ? 'border-gray-600 bg-gray-800' : 'border-gray-400 bg-gray-200'} hover:bg-gray-300 dark:hover:bg-gray-700 transition-all`}
-        >
-          {theme === 'light' ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              className="w-6 h-6 text-yellow-500"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2m0 16v2m10-10h-2m-16 0H2m16.95-6.95l-1.414 1.414M6.343 6.343 4.93 4.93m12.02 12.02 1.415 1.415M6.344 17.657l-1.415 1.415" />
-            </svg>
+      <button
+        className="themeToggle bg-accent text-base-content px-4 py-2 rounded font-semibold"
+        onClick={toggleTheme}
+      >
+        {theme === "sunset" ? (<BsFillSunFill className="w-6 h-6 text-yellow-500" />
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              className="w-6 h-6 text-white"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0112 21.75 9.718 9.718 0 012.248 15.002a9.718 9.718 0 011.29-9.213m9.462-4.097a9.718 9.718 0 019.213 9.213M15.002 2.248A9.718 9.718 0 0112 21.75" />
-            </svg>
-          )}
-        </button>
-      </div>
+            <BsFillMoonFill className="w-6 h-6 text-white" />)}
+      </button>
     </nav>
   );
 };

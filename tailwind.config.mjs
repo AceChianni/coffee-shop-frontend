@@ -1,49 +1,4 @@
-// // tailwind.config.js
-// module.exports = {
-//   content: [
-//     './src/**/*.{js,jsx,ts,tsx}',
-//     './pages/**/*.{js,jsx,ts,tsx}', 
-//     './styles/**/*.css', 
-//     './public/**/*.{html}',
-//   ],
-//   theme: {
-//     extend: {
-//       colors: {
-//         primary: '#4C6A33',
-//         secondary: '#6E4B3A',
-//         accent: '#D27848',
-//         neutral: '#A0A59A',
-//         'base-100': '#F1F7ED',
-//         'base-dark': '#1B512D',
-//         'text-primary': '#333333',
-//         'text-light': '#FFFFFF',
-//       },
-//     },
-//   },
-//   plugins: [require('daisyui')],
-//   daisyui: {
-//     themes: [
-//       {
-//         light: {
-//           primary: '#4C6A33',
-//           secondary: '#6E4B3A',
-//           accent: '#D27848',
-//           neutral: '#A0A59A',
-//           'base-100': '#F1F7ED',
-//           'base-content': '#333333',
-//         },
-//         dark: {
-//           primary: '#D27848',
-//           secondary: '#A0A59A',
-//           accent: '#F56C00',
-//           neutral: '#1B512D',
-//           'base-100': '#1B512D',
-//           'base-content': '#FFFFFF',
-//         },
-//       },
-//     ],
-//   },
-// };
+// tailwing.config.mjs 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -51,9 +6,73 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',  // Apply dark mode class to body
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ['coffee']
+    themes: [
+      {
+        sunset: { 
+          // Light theme colors
+          "primary": "#af7b3a",
+          "secondary": "#fef7d5",
+          "accent": "#6a4406",
+          "neutral": "#485613",
+          "base-100": "#fef7d5",
+          "base-200": "#fff8e1",
+          "base-300": "#fffbeb",
+          "base-content": "#111827",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
+        },
+        dim: { 
+          // Dark theme colors
+          "primary": "#be5615",
+          "secondary": "#ffdaa7",
+          "accent": "#632c02",
+          "neutral": "#4c3f07",
+          "base-100": "#ffdaa7",
+          "base-200": "#ffcc8a",
+          "base-300": "#ffb566",
+          "base-content": "#1f2937",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
+        },
+      },
+    ],
   },
-  darkMode: ['selector', '[data-theme="dim"]']
+  theme: {
+    extend: {
+      colors: {
+        copper: "#af7b3a",
+        cornsilk: "#fef7d5",
+        sepia: "#6a4406",
+        "sepia-2": "#6b4406",
+        "dark-moss-green": "#485613",
+        "burnt-orange": "#be5615",
+        sunset: "#ffdaa7",
+        "seal-brown": "#632c02",
+        "seal-brown-2": "#632c02",
+        "drab-dark-brown": "#4c3f07",
+      },
+      fontFamily: {
+        sans: ['Arial', 'sans-serif'],
+      },
+      borderRadius: {
+        DEFAULT: '0.25rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
+        '2xl': '1rem',
+      },
+      spacing: {
+        '4.5': '1.125rem',
+        '9': '2.25rem',
+        '18': '4.5rem',
+        '36': '9rem',
+      },
+    },
+  },
 };

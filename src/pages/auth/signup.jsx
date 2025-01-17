@@ -32,7 +32,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-[#BB9BB0]">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-3xl font-semibold mb-6 text-[#6E4B3A]">Sign Up</h1>
       <SignupForm buttonLabel="Sign Up" handleSignup={handleSignup} />
     </div>
