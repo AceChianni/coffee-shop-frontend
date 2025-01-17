@@ -1950,11 +1950,6 @@ html {
   border-color: rgb(160 165 154 / var(--tw-border-opacity, 1));
 }
 
-.bg-\[\#6D2E46\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(109 46 70 / var(--tw-bg-opacity, 1));
-}
-
 .bg-\[\#6E4B3A\] {
   --tw-bg-opacity: 1;
   background-color: rgb(110 75 58 / var(--tw-bg-opacity, 1));
@@ -2497,9 +2492,19 @@ footer {
 }
 
 @media (prefers-color-scheme: dark) {
+  .dark\:border-neutral {
+    --tw-border-opacity: 1;
+    border-color: rgb(160 165 154 / var(--tw-border-opacity, 1));
+  }
+
   .dark\:bg-base-dark {
     --tw-bg-opacity: 1;
     background-color: rgb(27 81 45 / var(--tw-bg-opacity, 1));
+  }
+
+  .dark\:bg-neutral {
+    --tw-bg-opacity: 1;
+    background-color: rgb(160 165 154 / var(--tw-bg-opacity, 1));
   }
 
   .dark\:bg-secondary {
@@ -2515,6 +2520,11 @@ footer {
   .dark\:text-neutral {
     --tw-text-opacity: 1;
     color: rgb(160 165 154 / var(--tw-text-opacity, 1));
+  }
+
+  .dark\:text-red-400 {
+    --tw-text-opacity: 1;
+    color: rgb(248 113 113 / var(--tw-text-opacity, 1));
   }
 
   .dark\:text-text-light {
@@ -2535,5 +2545,10 @@ footer {
   .dark\:hover\:bg-primary:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(76 106 51 / var(--tw-bg-opacity, 1));
+  }
+
+  .dark\:hover\:text-red-600:hover {
+    --tw-text-opacity: 1;
+    color: rgb(220 38 38 / var(--tw-text-opacity, 1));
   }
 }
