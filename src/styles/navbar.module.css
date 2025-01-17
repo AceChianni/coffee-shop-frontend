@@ -4,8 +4,8 @@
 }
   
 .link {
-  color: #6B46C1; /* Tailwind's color */
+  color: #F1F7ED; /* Tailwind's color */
   &:hover {
-    color: #6B46C1; /* Tailwind's hover variant */
+    color: #D27848; /* Tailwind's hover variant */
   }
 }
