@@ -20,7 +20,7 @@ export default function Signin() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-[#BB9BB0]">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-4xl font-semibold mb-6" style={{ color: '#6E4B3A' }}>
         Sign In
       </h1>

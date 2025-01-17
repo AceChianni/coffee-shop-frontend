@@ -1,3 +1,5 @@
+@import 'tailwindcss/tailwind.css';
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -2233,8 +2235,6 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-
-@import 'tailwindcss/tailwind.css';
 
 /* Default light mode styling */
 

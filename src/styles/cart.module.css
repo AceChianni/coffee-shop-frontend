@@ -1,0 +1,14 @@
+/* cart.module.css */
+.cartContainer {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cartSummary {
+    font-size: 1.125rem;
+    color: #1F2937; /* Tailwind's text-base-content color */
+  }
+  
+  /* Tailwind handles other colors */
+  

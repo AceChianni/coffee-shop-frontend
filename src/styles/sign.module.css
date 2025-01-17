@@ -1,23 +1,18 @@
-/* src/styles/sign.module.css */
-
-/* Sign In Button */
+/* sign.module.css */
 .signin-btn {
-  background-color: #F89C42; /* Sunset orange for primary button */
+  background-color: var(--tw-bg-primary);
   color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 12px;
+  border-radius: 0.25rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .signin-btn:hover {
-  background-color: #F56C00; /* Darker sunset color for hover */
+  background-color: var(--tw-bg-primary-focus);
 }
 
-/* Sign Up Link */
 .signup-link a {
-  color: #F89C42; /* Sunset color for links */
+  color: var(--tw-text-primary);
   text-decoration: none;
 }
 
