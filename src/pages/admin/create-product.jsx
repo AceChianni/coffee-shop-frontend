@@ -1,27 +1,47 @@
 // pages/admin/create-product.jsx
-import React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
-const CreateProduct = () => {
+export default function CreateProduct() {
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    description: '',
+    imageUrl: '',
+    stock: '',
+  });
+
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('authToken');
+    try {
+      const response = await axios.post('http://localhost:5000/api/products/create', formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert('Product created successfully');
+      router.push('/admin/list-product');
+    } catch (error) {
+      console.error(error);
+      alert('Error creating product');
+    }
+  };
+
   return (
-    <div>
-      <h1>Create Product</h1>
-      <form>
-        <div>
-          <label htmlFor="product-name">Product Name:</label>
-          <input type="text" id="product-name" name="product-name" />
-        </div>
-        <div>
-          <label htmlFor="product-price">Price:</label>
-          <input type="number" id="product-price" name="product-price" />
-        </div>
-        <div>
-          <label htmlFor="product-description">Description:</label>
-          <textarea id="product-description" name="product-description"></textarea>
-        </div>
-        <button type="submit">Create Product</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Product Name" required />
+      <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" required />
+      <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Description" required />
+      <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="Image URL" required />
+      <input type="number" name="stock" value={formData.stock} onChange={handleChange} placeholder="Stock" required />
+      <button type="submit">Create Product</button>
+    </form>
   );
-};
-
-export default CreateProduct;
+}
